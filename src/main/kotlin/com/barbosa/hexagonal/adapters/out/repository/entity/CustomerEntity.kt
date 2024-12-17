@@ -1,5 +1,6 @@
 package com.barbosa.hexagonal.adapters.out.repository.entity
 
+import com.barbosa.hexagonal.application.core.domain.Customer
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.data.mongodb.core.mapping.MongoId
 
@@ -10,4 +11,12 @@ data class CustomerEntity(
     val address: AddressEntity,
     val cpf: String,
     val isValidCpf: Boolean
-)
+) {
+    constructor(customer: Customer) : this(
+        customer.id,
+        customer.name,
+        AddressEntity(customer.address!!),
+        customer.cpf,
+        customer.isValidCpf
+    )
+}
