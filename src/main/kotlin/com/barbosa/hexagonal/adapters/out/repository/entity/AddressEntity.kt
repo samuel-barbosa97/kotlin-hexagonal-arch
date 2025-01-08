@@ -1,6 +1,7 @@
 package com.barbosa.hexagonal.adapters.out.repository.entity
 
 import com.barbosa.hexagonal.application.core.domain.Address
+import org.springframework.data.mongodb.core.aggregation.ArithmeticOperators.Add
 
 data class AddressEntity(
     val street: String,
@@ -12,4 +13,6 @@ data class AddressEntity(
         city = address.city,
         state = address.state,
     )
+
+    fun toAddress() = Address(street, city, state)
 }
