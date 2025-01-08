@@ -6,7 +6,6 @@ import com.barbosa.hexagonal.application.core.domain.Customer
 import com.barbosa.hexagonal.application.ports.`in`.FindCustomerByIdInputPort
 import com.barbosa.hexagonal.application.ports.`in`.InsertCustomerInputPort
 import jakarta.validation.Valid
-import org.springframework.data.crossstore.ChangeSetPersister
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
