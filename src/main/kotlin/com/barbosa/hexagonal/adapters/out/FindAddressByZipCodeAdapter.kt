@@ -10,6 +10,6 @@ class FindAddressByZipCodeAdapter(
     private val findAddressByZipCodeClient: FindAddressByZipCodeClient
 ) : FindAddressByZipCodeOutputPort {
 
-    override fun findAddressByZipCode(zipCode: String): Address =
+    override fun find(zipCode: String): Address =
         findAddressByZipCodeClient.findAddressByZipCode(zipCode).toAddress()
 }

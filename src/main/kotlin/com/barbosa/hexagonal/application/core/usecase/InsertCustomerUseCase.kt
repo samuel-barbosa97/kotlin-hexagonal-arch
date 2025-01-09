@@ -12,7 +12,7 @@ class InsertCustomerUseCase (
 
     override fun insert(customer: Customer, zipCode: String) {
         customer.apply {
-            address = findAddressByZipCodeOutputPort.findAddressByZipCode(zipCode)
+            address = findAddressByZipCodeOutputPort.find(zipCode)
         }.let {
 
         }

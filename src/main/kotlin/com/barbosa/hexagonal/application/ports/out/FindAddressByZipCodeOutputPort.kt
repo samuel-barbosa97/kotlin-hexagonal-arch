@@ -4,5 +4,5 @@ import com.barbosa.hexagonal.application.core.domain.Address
 
 interface FindAddressByZipCodeOutputPort {
 
-    fun findAddressByZipCode(zipCode: String): Address
+    fun find(zipCode: String): Address
 }
