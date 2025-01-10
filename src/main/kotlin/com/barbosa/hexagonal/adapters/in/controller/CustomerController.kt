@@ -3,6 +3,7 @@ package com.barbosa.hexagonal.adapters.`in`.controller
 import com.barbosa.hexagonal.adapters.`in`.controller.request.CustomerRequest
 import com.barbosa.hexagonal.adapters.`in`.controller.response.CustomerResponse
 import com.barbosa.hexagonal.application.core.domain.Customer
+import com.barbosa.hexagonal.application.ports.`in`.DeleteCustomerByIdInputPort
 import com.barbosa.hexagonal.application.ports.`in`.FindCustomerByIdInputPort
 import com.barbosa.hexagonal.application.ports.`in`.InsertCustomerInputPort
 import com.barbosa.hexagonal.application.ports.`in`.UpdateCustomerInputPort
@@ -16,6 +17,7 @@ class CustomerController(
     private val insertCustomerInputPort: InsertCustomerInputPort,
     private val findCustomerByIdInputPort: FindCustomerByIdInputPort,
     private val updateCustomerInputPort: UpdateCustomerInputPort,
+    private val deleteCustomerByIdInputPort: DeleteCustomerByIdInputPort
 ) {
 
     @PostMapping
@@ -41,5 +43,11 @@ class CustomerController(
             val customer = Customer(id, name, cpf = cpf)
             updateCustomerInputPort.update(customer, zipCode)
         }
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun delete(@PathVariable id: String) {
+        deleteCustomerByIdInputPort.delete(id)
     }
 }
