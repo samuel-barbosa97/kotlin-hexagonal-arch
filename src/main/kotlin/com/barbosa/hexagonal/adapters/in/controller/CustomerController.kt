@@ -8,6 +8,7 @@ import com.barbosa.hexagonal.application.ports.`in`.FindCustomerByIdInputPort
 import com.barbosa.hexagonal.application.ports.`in`.InsertCustomerInputPort
 import com.barbosa.hexagonal.application.ports.`in`.UpdateCustomerInputPort
 import jakarta.validation.Valid
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/v1/customers")
 class CustomerController(
     private val insertCustomerInputPort: InsertCustomerInputPort,
-    private val findCustomerByIdInputPort: FindCustomerByIdInputPort,
+    @Qualifier("findCustomerById") private val findCustomerByIdInputPort: FindCustomerByIdInputPort,
     private val updateCustomerInputPort: UpdateCustomerInputPort,
     private val deleteCustomerByIdInputPort: DeleteCustomerByIdInputPort
 ) {

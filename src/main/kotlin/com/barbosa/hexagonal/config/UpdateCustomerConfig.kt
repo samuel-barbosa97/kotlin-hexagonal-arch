@@ -1,6 +1,7 @@
 package com.barbosa.hexagonal.config
 
 import com.barbosa.hexagonal.adapters.out.FindAddressByZipCodeAdapter
+import com.barbosa.hexagonal.adapters.out.SendCpfForValidationAdapter
 import com.barbosa.hexagonal.adapters.out.UpdateCustomerAdapter
 import com.barbosa.hexagonal.application.core.usecase.FindCustomerByIdUseCase
 import com.barbosa.hexagonal.application.core.usecase.UpdateCustomerUseCase
@@ -14,10 +15,12 @@ class UpdateCustomerConfig {
     fun updateCustomer(
         findCustomerByIdUseCase: FindCustomerByIdUseCase,
         findAddressByZipCodeAdapter: FindAddressByZipCodeAdapter,
-        updateCustomerAdapter: UpdateCustomerAdapter
+        updateCustomerAdapter: UpdateCustomerAdapter,
+        sendCpfForValidationAdapter: SendCpfForValidationAdapter
     ) = UpdateCustomerUseCase(
-            findCustomerByIdUseCase,
-            findAddressByZipCodeAdapter,
-            updateCustomerAdapter
+        findCustomerByIdUseCase,
+        findAddressByZipCodeAdapter,
+        updateCustomerAdapter,
+        sendCpfForValidationAdapter
     )
 }
